@@ -2,10 +2,9 @@ require 'pry'
 
 class Song
 
-# These are instance variables, create writer and reader for these variables, still need to add these variables in initialize
 attr_accessor :name, :artist, :genre
 
-  @@all_songs = []
+  @@all = []
   @@count = 0
   @@genres = []
   @@artists = []
@@ -18,7 +17,7 @@ attr_accessor :name, :artist, :genre
     @@count += 1
     @@genres << genre
     @@artists << artist
-    @@all_songs << self
+    @@all << self
   end
 
   def self.all
@@ -66,16 +65,15 @@ attr_accessor :name, :artist, :genre
     self.artists.each do |a|
       count = 0
   # every time a song's genre match, add one to the counter
-      self.each do |song|
+      self.all.each do |song|
 
         if song.artist = a
           count += 1
         end
-      count
   # add the final count to that genre key's value in genre_count's hash
-      artist_count[:artist] = count
+        artist_count[a] = count
+      end
+      artist_count
     end
-    artist_count
   end
-end
 end
